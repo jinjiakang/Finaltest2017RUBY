@@ -1,13 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Grade Results</h1>
+<h1>成績列表</h1>
 
-<table>
+<div class="page-header"><%= link_to '新增學生', new_grade_result_path ,class: "btn btn-success" %></div>
+
+
+<p>分數級別說明 : 90 分以上 S級 / 80~90:A級 /70~79:B級 /60~60:C 未滿60:D級 </p>
+
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Stundent</th>
-      <th>Score</th>
+      <th>姓名</th>
+      <th>學號</th>
+      <th>分數</th>
+      <th>處理</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +24,9 @@
         <td><%= grade_result.name %></td>
         <td><%= grade_result.stundent_id %></td>
         <td><%= grade_result.score %></td>
-        <td><%= link_to 'Show', grade_result %></td>
-        <td><%= link_to 'Edit', edit_grade_result_path(grade_result) %></td>
-        <td><%= link_to 'Destroy', grade_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<!--        <td><%= link_to 'Show', grade_result %></td>-->
+        <td><%= link_to '編輯', edit_grade_result_path(grade_result) ,class: "btn btn-success"%></td>
+        <td><%= link_to '刪除', grade_result, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger"%></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Grade Result', new_grade_result_path %>
+

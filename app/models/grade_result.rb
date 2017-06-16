@@ -1,0 +1,2 @@
+class GradeResult < ApplicationRecord
+end

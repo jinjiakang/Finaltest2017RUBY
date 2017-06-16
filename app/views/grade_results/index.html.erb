@@ -5,7 +5,7 @@
 <div class="page-header"><%= link_to '新增學生', new_grade_result_path ,class: "btn btn-success" %></div>
 
 
-<p>分數級別說明 : 90 分以上 S級 / 80~90:A級 /70~79:B級 /60~60:C 未滿60:D級 </p>
+<p>分數級別說明 : 90 分以上 S級 / 80~89:A級 /70~79:B級 /60~60:C 未滿60:D級 </p>
 
 <table class="table">
   <thead>
@@ -23,7 +23,21 @@
       <tr>
         <td><%= grade_result.name %></td>
         <td><%= grade_result.stundent_id %></td>
-        <td><%= grade_result.score %></td>
+        <td>
+          <% case grade_result.score %>
+            <% when 90..100 %>
+            <%= "S級" %>
+            <% when 80..89 %>
+            <%= "A級" %>
+            <% when 70..79 %>
+            <%= "B級" %>
+            <% when 60..69 %>
+            <%= "C級" %>
+            <% else %>
+            <%= "D級" %>
+          <% end %>
+            <%= grade_result.score %>分
+          </td>
 <!--        <td><%= link_to 'Show', grade_result %></td>-->
         <td><%= link_to '編輯', edit_grade_result_path(grade_result) ,class: "btn btn-success"%></td>
         <td><%= link_to '刪除', grade_result, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger"%></td>
